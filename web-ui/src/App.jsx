@@ -23,7 +23,8 @@ function App() {
     const handlePrediction = async (data) => {
         setIsPredicting(true);
         try {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+            const apiUrl = import.meta.env.VITE_API_URL ||
+                (window.location.hostname === 'localhost' ? 'http://localhost:8000' : 'https://my-ml-project-backend.onrender.com');
             const response = await fetch(`${apiUrl}/predict`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

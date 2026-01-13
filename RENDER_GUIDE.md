@@ -24,9 +24,12 @@ Ensure all your files (including the new `requirements.txt`) are pushed to a Git
    - **Build Command**: `npm install && npm run build` (Run this in the `web-ui` directory or set **Root Directory** to `web-ui`)
    - **Publish Directory**: `dist` (if Root Directory is `web-ui`) or `web-ui/dist`
 4. **Environment Variables**:
+   - In development, we use `.env` files.
+   - On Render, **do not upload your .env file** (it's ignored by Git). 
+   - Instead, go to the **Environment** tab on your Render dashboard.
    - Add a variable: `VITE_API_URL`
-   - Value: The Backend URL you copied (e.g., `https://cardio-backend.onrender.com`)
-5. Click **Create Static Site**.
+   - Value: Your backend URL (e.g., `https://my-ml-project-backend.onrender.com`).
+5. Click **Save Changes** and **Manual Deploy** > **Clear Cache and Deploy**.
 
 ## 4. Final Polish
 Wait for both to deploy. Your frontend will now communicate with your backend automatically!
