@@ -32,11 +32,23 @@ function App() {
             if (!response.ok) throw new Error('Prediction failed');
             const result = await response.json();
             setPrediction(result);
+
+            // Wait for DOM update then scroll
+            setTimeout(() => {
+                document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
         } catch (error) {
             console.error("Error predicting:", error);
         } finally {
             setIsPredicting(false);
         }
+    };
+
+    const handleRestart = () => {
+        // Keep prediction for now so sections don't jump, just scroll back?
+        // Or if user wants to "Start New", we can clear it.
+        // User said: "user moves to form section"
+        document.getElementById('predict-section')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -49,40 +61,47 @@ function App() {
                 <div className="mesh-circle mesh-circle-4" />
             </div>
 
-            <Navbar theme={theme} toggleTheme={toggleTheme} />
+            <Navbar theme={theme} toggleTheme={toggleTheme} onStartAssessment={handleRestart} />
 
             <main className="container mx-auto px-6 pt-32 pb-12 relative z-10">
-                <AnimatePresence mode="wait">
-                    {!prediction ? (
-                        <motion.div
-                            key="landing"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: 0.6, ease: "circOut" }}
-                            className="space-y-20"
-                        >
-                            <Hero />
-                            <div id="predict-section" className="max-w-4xl mx-auto pb-12">
-                                <PredictionForm onPredict={handlePrediction} isPredicting={isPredicting} />
-                            </div>
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            key="results"
-                            initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                            exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                        >
-                            <ResultDashboard prediction={prediction} onRestart={() => setPrediction(null)} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                <div className="space-y-24">
+                    <Hero />
+
+                    <div id="predict-section" className="max-w-4xl mx-auto scroll-mt-32">
+                        <PredictionForm onPredict={handlePrediction} isPredicting={isPredicting} />
+                    </div>
+
+                    <AnimatePresence>
+                        {prediction && (
+                            <motion.div
+                                id="results-section"
+                                initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+                                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                exit={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                className="scroll-mt-32"
+                            >
+                                <div className="max-w-6xl mx-auto">
+                                    <div className="text-center mb-12">
+                                        <h2 className="text-4xl font-bold mb-4">Your Health Report</h2>
+                                        <div className="w-24 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] mx-auto rounded-full" />
+                                    </div>
+                                    <ResultDashboard prediction={prediction} onRestart={handleRestart} />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </main>
 
-            <footer className="py-12 border-t border-[var(--glass-border)] text-center text-[var(--text-secondary)] text-sm">
-                <p>© 2026 CardioCare AI. Developed with ❤️ for Heart Health.</p>
+            <footer className="py-12 border-t border-[var(--glass-border)] text-center space-y-4">
+                <div className="flex flex-col items-center gap-2">
+                    <Heart className="w-5 h-5 text-[#ff416c]" fill="#ff416c" />
+                    <p className="text-[var(--text-primary)] font-semibold tracking-wide">
+                        Made With Love By <span className="text-[var(--accent-secondary)]">Anjali</span>
+                    </p>
+                </div>
+                <p className="text-[var(--text-secondary)] text-sm">© 2026 CardioCare AI. Empowering Heart Health Everywhere.</p>
             </footer>
         </div>
     );

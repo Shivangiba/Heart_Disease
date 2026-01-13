@@ -69,9 +69,10 @@ const PredictionForm = ({ onPredict, isPredicting }) => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentStep}
-                        initial={{ x: 20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -20, opacity: 0 }}
+                        initial={{ x: 50, opacity: 0, filter: 'blur(10px)' }}
+                        animate={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
+                        exit={{ x: -50, opacity: 0, filter: 'blur(10px)' }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         className="grid grid-cols-1 md:grid-cols-2 gap-8"
                     >
                         {currentFields.fields.map(field => {

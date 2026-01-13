@@ -159,7 +159,7 @@ const ResultDashboard = ({ prediction, onRestart }) => {
                     onClick={onRestart}
                     className="flex items-center gap-2 px-8 py-4 bg-[var(--glass-border)] hover:bg-[var(--glass-border)] rounded-2xl font-bold transition-all hover:scale-105"
                 >
-                    <RefreshCcw className="w-5 h-5" /> Start New Assessment
+                    <RefreshCcw className="w-5 h-5" /> Adjust Parameters
                 </button>
             </div>
 

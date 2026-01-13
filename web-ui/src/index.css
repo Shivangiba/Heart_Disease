@@ -48,6 +48,11 @@
 @layer components {
     .glass-card {
         @apply bg-[var(--bg-card)] backdrop-blur-xl border border-[var(--glass-border)] rounded-[2rem] shadow-2xl;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card-sm {
+        @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4;
     }
 
     .btn-primary {
@@ -56,6 +61,11 @@
 
     .input-field {
         @apply w-full bg-slate-950/50 border border-[var(--glass-border)] rounded-2xl px-5 py-4 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent outline-none transition-all duration-300 placeholder:text-slate-600;
+        box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .text-glow {
+        text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
     }
 }
 
@@ -148,4 +158,39 @@
     left: 15%;
     animation-duration: 40s;
     animation-delay: -15s;
+}
+
+/* Reveal Animations */
+@keyframes reveal-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-reveal {
+    animation: reveal-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
 }
