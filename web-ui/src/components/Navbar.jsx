@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
+import horseLogo from '../assets/horse-logo.png';
 
 const Navbar = ({ theme, toggleTheme }) => {
     return (
@@ -8,27 +9,14 @@ const Navbar = ({ theme, toggleTheme }) => {
             <div className="max-w-7xl mx-auto flex justify-between items-center glass-card px-8 py-3">
                 <div className="flex items-center gap-3">
                     <motion.div
-                        animate={{
-                            scale: [1, 1.1, 1],
-                            rotate: [0, 5, -5, 0]
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 3,
-                            ease: "easeInOut"
-                        }}
-                        className="relative"
+                        whileHover={{ scale: 1.05 }}
+                        className="relative w-8 h-8 flex items-center justify-center overflow-hidden rounded-lg opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                     >
-                        <Heart className="w-8 h-8 text-[#ff416c] filter drop-shadow-[0_0_8px_rgba(255,65,108,0.5)]" fill="#ff416c" />
-                        <motion.div
-                            className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full"
-                            animate={{ opacity: [0, 1, 0] }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                        />
+                        <img src={horseLogo} alt="" className="w-full h-full object-cover" />
                     </motion.div>
                     <div className="flex flex-col">
-                        <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">CardioCare AI</span>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-secondary)] leading-none ml-0.5">By Anjali</span>
+                        <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">CardioCare AI</span>
+                        <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[var(--accent-primary)] leading-none ml-0.5 opacity-60">By Shivangi</span>
                     </div>
                 </div>
 

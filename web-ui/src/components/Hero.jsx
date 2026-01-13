@@ -1,21 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Activity, ShieldCheck, Zap } from 'lucide-react';
+import horseLogo from '../assets/horse-logo.png';
 
 const Hero = () => {
     return (
-        <section className="text-center py-12 space-y-8">
+        <section className="text-center py-12 space-y-12 relative">
+            {/* Extremely Subtle Watermark */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full -z-10 opacity-[0.008] pointer-events-none grayscale">
+                <img src={horseLogo} alt="" className="w-full h-full object-contain scale-110" />
+            </div>
+
             <motion.div
-                initial={{ scale: 0.8, opacity: 0, filter: 'blur(20px)' }}
-                animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative z-10"
             >
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter bg-gradient-to-br from-blue-400 via-pink-500 to-purple-600 bg-clip-text text-transparent leading-tight pb-4 animate-reveal">
-                    The Future of <br className="hidden md:block" /> Heart Health
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--glass-border)] bg-white/5 text-[var(--accent-primary)] text-[10px] font-bold tracking-[0.2em] uppercase mb-8"
+                >
+                    Professional Grade Analysis
+                </motion.div>
+
+                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter bg-gradient-to-b from-slate-100 to-slate-400 bg-clip-text text-transparent leading-tight pb-4">
+                    Cardiovascular <br className="hidden md:block" /> Intelligence
                 </h1>
-                <p className="mt-6 text-xl text-[var(--text-secondary)] max-w-2xl mx-auto font-light leading-relaxed animate-reveal" style={{ animationDelay: '0.2s' }}>
-                    Our advanced AI analyzes vital bio-metrics to provide instant, medical-grade cardiovascular risk assessments.
-                    Precision medicine, right at your fingertips.
+                <p className="mt-8 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto font-normal leading-relaxed opacity-70" style={{ animationDelay: '0.2s' }}>
+                    Advanced neural networks providing precise heart health risk assessments. <br />
+                    Medical informatics distilled for clarity and action.
                 </p>
             </motion.div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import horseLogo from './assets/horse-logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Activity, ShieldCheck, Sun, Moon, Info, BarChart3, ChevronRight } from 'lucide-react';
 import Navbar from './components/Navbar';
@@ -95,14 +96,16 @@ function App() {
                 </div>
             </main>
 
-            <footer className="py-12 border-t border-[var(--glass-border)] text-center space-y-4">
-                <div className="flex flex-col items-center gap-2">
-                    <Heart className="w-5 h-5 text-[#ff416c]" fill="#ff416c" />
-                    <p className="text-[var(--text-primary)] font-semibold tracking-wide">
-                        Made With Love By <span className="text-[var(--accent-secondary)]">Anjali</span>
+            <footer className="py-12 border-t border-[var(--glass-border)] text-center space-y-6">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-8 h-8 opacity-20 grayscale hover:opacity-100 transition-all duration-500">
+                        <img src={horseLogo} alt="" className="w-full h-full object-contain" />
+                    </div>
+                    <p className="text-[var(--text-primary)] font-medium tracking-[0.2em] uppercase text-[10px] opacity-60">
+                        Made With Love By <span className="text-[var(--accent-primary)]">Shivangi</span>
                     </p>
                 </div>
-                <p className="text-[var(--text-secondary)] text-sm">© 2026 CardioCare AI. Empowering Heart Health Everywhere.</p>
+                <p className="text-[var(--text-secondary)] text-[10px] font-medium tracking-widest opacity-40 uppercase">© 2026 CardioCare AI. All Rights Reserved.</p>
             </footer>
         </div>
     );

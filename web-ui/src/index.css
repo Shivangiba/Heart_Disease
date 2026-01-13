@@ -6,33 +6,36 @@
 
 :root {
     --bg-dark: #020617;
-    --bg-card: rgba(15, 23, 42, 0.6);
-    --accent-primary: #3b82f6;
-    --accent-secondary: #f43f5e;
+    --bg-card: rgba(15, 23, 42, 0.4);
+    --accent-primary: #94a3b8;
+    --accent-secondary: #f8fafc;
+    --accent-vibrant: #64748b;
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(148, 163, 184, 0.1);
     --success: #10b981;
     --error: #ef4444;
 }
 
 [data-theme='light'] {
     --bg-dark: #f8fafc;
-    --bg-card: rgba(255, 255, 255, 0.8);
-    --accent-primary: #2563eb;
-    --accent-secondary: #db2777;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --accent-primary: #1e293b;
+    --accent-secondary: #0f172a;
+    --accent-vibrant: #334155;
     --text-primary: #0f172a;
-    --text-secondary: #64748b;
-    --glass-border: rgba(0, 0, 0, 0.08);
+    --text-secondary: #475569;
+    --glass-border: rgba(15, 23, 42, 0.08);
 }
 
 @layer base {
     * {
-        @apply border-[var(--glass-border)] selection:bg-blue-500/30;
+        @apply border-[var(--glass-border)] selection:bg-indigo-500/30 transition-colors duration-200;
     }
 
     body {
-        @apply bg-[var(--bg-dark)] text-[var(--text-primary)] font-['Inter'] antialiased transition-colors duration-500;
+        @apply bg-[var(--bg-dark)] text-[var(--text-primary)] font-['Inter'] antialiased transition-colors duration-700;
+        cursor: default;
     }
 
     h1,
@@ -47,25 +50,29 @@
 
 @layer components {
     .glass-card {
-        @apply bg-[var(--bg-card)] backdrop-blur-xl border border-[var(--glass-border)] rounded-[2rem] shadow-2xl;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        @apply bg-[var(--bg-card)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-[2.5rem] shadow-2xl transition-all duration-500;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card:hover {
+        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
     }
 
     .glass-card-sm {
-        @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4;
+        @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-300;
     }
 
     .btn-primary {
-        @apply relative overflow-hidden bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+        @apply relative overflow-hidden bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-vibrant)] to-[var(--accent-secondary)] text-white font-bold py-4 px-10 rounded-2xl shadow-xl hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-xs;
     }
 
     .input-field {
-        @apply w-full bg-slate-950/50 border border-[var(--glass-border)] rounded-2xl px-5 py-4 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent outline-none transition-all duration-300 placeholder:text-slate-600;
+        @apply w-full bg-slate-950/40 border border-[var(--glass-border)] rounded-2xl px-6 py-4 focus:ring-2 focus:ring-[var(--accent-primary)]/50 focus:border-[var(--accent-primary)]/50 outline-none transition-all duration-500 placeholder:text-slate-600;
         box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
     }
 
     .text-glow {
-        text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
     }
 }
 

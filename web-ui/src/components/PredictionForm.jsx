@@ -45,10 +45,10 @@ const PredictionForm = ({ onPredict, isPredicting }) => {
     const currentFields = steps[currentStep];
 
     return (
-        <div className="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden border-[var(--glass-border)]">
             {/* Background glow Decor */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 blur-3xl rounded-full pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-pink-500/10 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[var(--accent-primary)]/5 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-slate-500/5 blur-3xl rounded-full pointer-events-none" />
 
             <div className="relative z-10">
                 <div className="flex justify-between items-center mb-12">
