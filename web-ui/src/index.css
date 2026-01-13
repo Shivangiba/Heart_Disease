@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-dark: #020617;
+    --bg-card: rgba(15, 23, 42, 0.6);
+    --accent-primary: #3b82f6;
+    --accent-secondary: #f43f5e;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --success: #10b981;
+    --error: #ef4444;
+}
+
+[data-theme='light'] {
+    --bg-dark: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --accent-primary: #2563eb;
+    --accent-secondary: #db2777;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+    * {
+        @apply border-[var(--glass-border)] selection:bg-blue-500/30;
+    }
+
+    body {
+        @apply bg-[var(--bg-dark)] text-[var(--text-primary)] font-['Inter'] antialiased transition-colors duration-500;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-['Outfit'] tracking-tight;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-[var(--bg-card)] backdrop-blur-xl border border-[var(--glass-border)] rounded-[2rem] shadow-2xl;
+    }
+
+    .btn-primary {
+        @apply relative overflow-hidden bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .input-field {
+        @apply w-full bg-slate-950/50 border border-[var(--glass-border)] rounded-2xl px-5 py-4 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent outline-none transition-all duration-300 placeholder:text-slate-600;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-800/50 border-4 border-solid border-transparent bg-clip-padding rounded-full hover:bg-slate-700/50;
+}
+
+/* Background Animated Gradient Mesh - The CRAZY UI touch */
+.bg-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mesh-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: float-mesh 25s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes float-mesh {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(15%, 10%) scale(1.2) rotate(120deg);
+    }
+
+    66% {
+        transform: translate(-10%, 20%) scale(0.9) rotate(240deg);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(360deg);
+    }
+}
+
+.mesh-circle-1 {
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--accent-primary), transparent);
+    top: -20%;
+    left: -10%;
+    animation-duration: 30s;
+}
+
+.mesh-circle-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-secondary), transparent);
+    bottom: -10%;
+    right: -5%;
+    animation-duration: 35s;
+    animation-delay: -5s;
+}
+
+.mesh-circle-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #8b5cf6, transparent);
+    top: 30%;
+    right: 20%;
+    animation-duration: 25s;
+    animation-delay: -10s;
+}
+
+.mesh-circle-4 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #0ea5e9, transparent);
+    bottom: 20%;
+    left: 15%;
+    animation-duration: 40s;
+    animation-delay: -15s;
+}

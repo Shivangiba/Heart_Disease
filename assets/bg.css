@@ -1,0 +1,38 @@
+/* Background gradient */
+.stApp {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* Glass card */
+.glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Button animation */
+.stButton > button {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(255, 75, 43, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
