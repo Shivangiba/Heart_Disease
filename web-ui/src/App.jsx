@@ -23,7 +23,6 @@ function App() {
     const handlePrediction = async (data) => {
         setIsPredicting(true);
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
             const response = await fetch(`${apiUrl}/predict`, {
                 method: 'POST',
